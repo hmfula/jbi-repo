@@ -42,7 +42,7 @@ private EntityManager eManager;
 		 eManager.close();
 	 }
   }
-//  @Test
+//  @Test //
 //  public void saveAndRetrieveWood() {
 //	  String woodAsString = "Wood{quantity=10, location={name=Espoo, address=02600}, color=Brown, density=1.4, machinability=true}";
 //	  Wood wood = createWood();
