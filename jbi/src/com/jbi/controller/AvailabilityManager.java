@@ -13,7 +13,7 @@ import javax.persistence.Query;
 import com.domain.model.entity.AvailabilityNotice;
 import com.domain.model.entity.Wood;
 //@Stateless
-//TODO add comment
+
 public class AvailabilityManager {
 
 //    @PersistenceContext(unitName = "chapter10PU")
