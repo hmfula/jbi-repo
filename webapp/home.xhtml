@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<title>Just Build It Home</title>
+</head>
+<h:body>
+	<!--#{controller.message}-->
+	<h:form>
+		<h:commandLink action="#{controller.showPage}"
+			value="| Search For Auction|">
+			<f:param name="pageId" value="1"/>
+		</h:commandLink>
+		<h:commandLink action="#{controller.showPage}"
+			value=" Create Auction |">
+			<f:param name="pageId" value="2"/>
+		</h:commandLink>
+		<h:commandLink action="#{controller.showPage}" value=" View Bids|">
+			<f:param name="pageId" value="3"/>
+		</h:commandLink>
+		<h:commandLink action="#{controller.showPage}" value=" Create Bid|">
+			<f:param name="pageId" value="4"/>
+		</h:commandLink>
+		<h:commandLink action="#{controller.showPage}" value="Home|">
+			<f:param name="pageId" value="5"/>
+		</h:commandLink>
+	</h:form>
+
+<!-- Available Auctions in Table -->
+
+    <h1>List of available auctions </h1>
+    <hr/>
+    <h:dataTable value="#{controller.availabilityNoticeList}" var="an" border="1">
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Notice ID"/>
+            </f:facet>
+            <h:outputText value="#{an.id}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Availability Date"/>
+            </f:facet>
+            <h:outputText value="#{an.availableDate}"/>
+        </h:column>
+
+        <h:column>
+            <f:facet name="header">
+                <h:outputText value="Guide Price"/>
+            </f:facet>
+            <h:outputText value="#{an.guidePrice}"/>
+        </h:column>
+    <h:column>
+            <f:facet name="header">
+                <h:outputText value="Description"/>
+            </f:facet>
+            <h:outputText value="#{an.description}"/>
+        </h:column>
+		
+		
+		<h:column>
+            <f:facet name="header">
+                <h:outputText value="Wood Amount"/>
+            </f:facet>
+            <h:outputText value="#{an.wood1}"/>
+        </h:column>
+		
+    </h:dataTable>
+    <h:form>
+        <h:link outcome="createAvailability.xhtml" value="Create a new auction"/>
+    </h:form>
+    <hr/>
+    <i>Micronet - Java EE 6 SCEA Project prototype </i>
+</h:body>
+
+
+</html>

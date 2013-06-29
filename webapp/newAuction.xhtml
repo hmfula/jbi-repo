@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Manage Availability Notices</title>
+</h:head>
+<h:body>
+	<h1>Create a new availability notice</h1>
+	<hr />
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Available Date :" />
+			<h:inputText
+				value="#{jbiController.availabilityNotice.availableDate}">
+				<f:convertDateTime pattern="dd-mm-yyyy" />
+			</h:inputText>
+			<h:outputLabel value="Price : " />
+			<h:inputText value="#{jbiController.availabilityNotice.guidePrice}">
+				<f:convertNumber />
+			</h:inputText>
+			<h:outputLabel value="Notice Description  : " />
+			<h:inputTextarea
+				value="#{jbiController.availabilityNotice.description}" cols="20"
+				rows="5" />
+			<h:outputLabel value="Amount of Matlab books: " />
+			<h:inputText value="#{jbiController.availabilityNotice.wood1}">
+				<f:convertNumber />
+			</h:inputText>
+		</h:panelGrid>
+		<h:commandButton value="Create Auction"
+			action="#{jbiController.createAvailabilityNotice}" />
+
+	</h:form>
+	<hr />
+	<i>Micronet - Java EE 6 SCEA Project Prototype</i>
+
+</h:body>
+</html>
