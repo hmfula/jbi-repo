@@ -1,26 +1,27 @@
-package com.domain.model.entity;
+package entity;
 
-import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import com.domain.model.EMaterialType;
+import model.EMaterialType;
+
 
 /**
  * Realizes the concept of an availability notice used by the inventory managers to make construction materials available for bidding.
@@ -37,7 +38,8 @@ public class AvailabilityNotice {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private	long id;
 	
-	private Timestamp availableDate;
+	@Temporal(TemporalType.DATE)
+	private Date availableDate;
 
 	private float guidePrice;
 
@@ -48,7 +50,9 @@ public class AvailabilityNotice {
 	
 
 	@Transient
-	private Map<EMaterialType, Float> guidePrices = new HashMap<EMaterialType, Float>(); 
+	private Map<EMaterialType, Float> guidePrices = new HashMap<EMaterialType, Float>();
+
+	private String description; 
 	
 	public AvailabilityNotice() {
 	}
@@ -62,12 +66,25 @@ public class AvailabilityNotice {
 	}
 	
 	
-	public Timestamp getAvailableDate() {
+	public Date getAvailableDate() {
 		return availableDate;
 	}
 	
-	public void setAvailableDate(Timestamp availableDate) {
+	public void setAvailableDate(Date availableDate) {
 		this.availableDate = availableDate;
+	}
+	public void setAvailableDate(String availableDate) {
+		
+		//"MM/dd/yyyy h:mm:ss a"
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
+//		String.format( "{0:dd/MM/yyyy}", sdf);
+		try {
+			this.availableDate = (Date) sdf.parse(availableDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
@@ -78,16 +95,39 @@ public class AvailabilityNotice {
 		
 	}
 	
+	//TODO remove hard code
+	public void setGuidePrice( float guidePrice) {
+			guidePrices.put(EMaterialType.WOOD, guidePrice);
+		
+	}
+	
 	public List<Wood> getWood() {
 		return woodInventory;
 	}
+	public int getWood1() {
+		return woodInventory.size();
+	}
+	
 	public void setWood(Wood wood) {
 		wood.setAvailabilityNotice(this);//This is important to update the other side of the relationship
 		woodInventory.add(wood);
 	}
 	
+	
+	
+	public void setWood1(int quantity) {
+		Wood wood = new Wood(); 
+		wood.setQuantity(quantity);
+		wood.setAvailabilityNotice(this);//This is important to update the other side of the relationship
+		woodInventory.add(wood);
+	}
 	//End API
 	
+	//TODO remove bad hack
+	public float getGuidePrice()
+	{
+		return guidePrices.get(EMaterialType.WOOD) !=null? guidePrices.get(EMaterialType.WOOD): 0;
+	}
 	
 	
 	
@@ -131,4 +171,12 @@ public class AvailabilityNotice {
 		return sb.toString();
 	}
 	
+	
+	public String getDescription() {
+		return description;
+    }
+
+    public void setDescription(String description) {
+    	this.description = description;
+    }
 }

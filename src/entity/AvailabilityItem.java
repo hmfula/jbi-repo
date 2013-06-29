@@ -1,11 +1,12 @@
-package com.domain.model.entity;
+package entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-import com.domain.model.Location;
+import model.Location;
+
 
 /**
  * Realizes the base concept of an item available to the building material exchange. All items available extend this class.

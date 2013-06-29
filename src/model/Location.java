@@ -1,4 +1,4 @@
-package com.domain.model;
+package model;
 
 import java.io.Serializable;
 /**

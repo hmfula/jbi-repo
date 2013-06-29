@@ -1,31 +1,33 @@
-package com.jbi.controller;
+package controller;
 
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+//import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 
-import com.domain.model.entity.AvailabilityNotice;
-import com.domain.model.entity.Wood;
+import entity.AvailabilityNotice;
+import entity.Wood;
 
+@Stateless
 public class AvailabilityManager {
 
-//    @PersistenceContext(unitName = "chapter10PU")
-  
+   
 	  private static final String PERSISTENCE_UNIT_NAME = "jbi";
-	  private EntityManagerFactory factory;
+//	  private EntityManagerFactory factory;
+	 
+	  @PersistenceContext(unitName = PERSISTENCE_UNIT_NAME)
 	  private EntityManager em;
 	  
 	  
 	  public AvailabilityManager(){
-		  
-		  factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-		  em = factory.createEntityManager();
+//		  
+//		  factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+//		  em = factory.createEntityManager();
 		  
 	  }
     
@@ -43,23 +45,23 @@ public class AvailabilityManager {
 	
 
 	public boolean createAvailabilityNotice(AvailabilityNotice availabilityNotice) {
-		 EntityTransaction tx = em.getTransaction();
+//		 EntityTransaction tx = em.getTransaction();
 		  
-		  tx.begin();
+//		  tx.begin();
 		  em.persist(availabilityNotice);
-		  tx.commit();
+//		  tx.commit();
 		
 		  return   findAllAvailabilityNotices().contains(availabilityNotice) ? true : false;
 		  
 	}
 
 	public boolean removeAvailabilityNotice(long availabilityNoticeId) {
-		 EntityTransaction tx = em.getTransaction();
+//		 EntityTransaction tx = em.getTransaction();
 		  
-		  tx.begin();
+//		  tx.begin();
 		  AvailabilityNotice availabilityNotice = findAvailabilityNotice(availabilityNoticeId);
 		  em.remove(availabilityNotice);
-		  tx.commit();
+//		  tx.commit();
 		  return findAllAvailabilityNotices().contains(availabilityNotice) ? false : true;
 	}
 	
@@ -72,21 +74,34 @@ public class AvailabilityManager {
 	}
 
 	public boolean removeWoodFromAvailabilityNotice(AvailabilityNotice  availabilityNotice, Wood wood) {
-		 EntityTransaction tx = em.getTransaction();		  
-		  			tx.begin();
+//		 EntityTransaction tx = em.getTransaction();		  
+//		  			tx.begin();
 					em.remove(wood);
-					tx.commit();
+//					tx.commit();
 					em.refresh(availabilityNotice);
 		AvailabilityNotice updatedAvailabilityNotice= findAvailabilityNotice(availabilityNotice.getId());
 		return updatedAvailabilityNotice.getWood().contains(wood) ? false : true;
 	}
 
 	public boolean addWoodToAvailabilityNotice(AvailabilityNotice availabilityNotice, Wood wood) {
-		 EntityTransaction tx = em.getTransaction();		  
-		  tx.begin();
+//		 EntityTransaction tx = em.getTransaction();		  
+//		  tx.begin();
 		  availabilityNotice.setWood(wood);
 		  em.persist(availabilityNotice);
-		  tx.commit();
+//		  tx.commit();
+
+		return  findAllAvailabilityNotices().contains(availabilityNotice) ? true : false;
+	}
+	
+	
+	
+	
+	public boolean addWoodToAvailabilityNotice(AvailabilityNotice availabilityNotice, int woodAmount) {
+//		 EntityTransaction tx = em.getTransaction();		  
+//		  tx.begin();
+		  availabilityNotice.setWood1(woodAmount);
+		  em.persist(availabilityNotice);
+//		  tx.commit();
 
 		return  findAllAvailabilityNotices().contains(availabilityNotice) ? true : false;
 	}

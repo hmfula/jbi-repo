@@ -7,8 +7,8 @@
 
     <persistence-unit name="jbi" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-       <class>com.domain.model.entity.Wood</class>
-         <class>com.domain.model.entity.AvailabilityNotice</class>
+       <class>entity.Wood</class>
+         <class>entity.AvailabilityNotice</class>
        
        
         <properties>

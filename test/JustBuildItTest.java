@@ -11,15 +11,17 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import model.EMaterialType;
+import model.Location;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.domain.model.EMaterialType;
-import com.domain.model.Location;
-import com.domain.model.entity.AvailabilityNotice;
-import com.domain.model.entity.Wood;
-import com.jbi.controller.AvailabilityManager;
+
+import controller.AvailabilityManager;
+import entity.AvailabilityNotice;
+import entity.Wood;
 
 
 
@@ -27,7 +29,7 @@ public class JustBuildItTest {
 
   private static final String PERSISTENCE_UNIT_NAME = "jbi";
   private EntityManagerFactory emFactory;
-private EntityManager eManager;
+  private EntityManager eManager;
 
   @Before
   public void setUp() throws Exception {

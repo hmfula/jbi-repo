@@ -4,7 +4,11 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="C:/lib/jpa/javax.persistence_1.0.0.jar"/>
-	<classpathentry kind="lib" path="C:/lib/jpa/derby.jar"/>
+	<classpathentry kind="lib" path="C:/lib/jpa/derby.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="../"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/lib/jpa/derbyclient.jar"/>
 	<classpathentry kind="lib" path="C:/lib/jpa/eclipselink.jar"/>
 	<classpathentry kind="lib" path="C:/lib/jpa/eclipselink-jpa-modelgen_2.4.1.v20121003-ad44345.jar"/>
@@ -12,5 +16,20 @@
 	<classpathentry kind="lib" path="C:/lib/jpa/org.eclipse.persistence.jpars.source_2.4.1.v20121003-ad44345.jar"/>
 	<classpathentry kind="lib" path="C:/lib/jpa/org.eclipse.persistence.jpars_2.4.1.v20121003-ad44345.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="lib" path="C:/glassfishv3/glassfish/modules/javax.ejb.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/D:/userdata/mfula/.eclipse/org.eclipse.platform_4.2.0_248562372/plugins/oracle.eclipse.tools.doc.javaee6_1.0.0.201106220649/javaee6doc/doc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/glassfishv3/glassfish/modules/endorsed/javax.annotation.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/D:/userdata/mfula/.eclipse/org.eclipse.platform_4.2.0_248562372/plugins/oracle.eclipse.tools.doc.javaee6_1.0.0.201106220649/javaee6doc/doc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/glassfishv3/glassfish/modules/jsf-api.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/D:/userdata/mfula/.eclipse/org.eclipse.platform_4.2.0_248562372/plugins/oracle.eclipse.tools.doc.javaee6_1.0.0.201106220649/javaee6doc/doc/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

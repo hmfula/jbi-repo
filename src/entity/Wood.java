@@ -1,4 +1,4 @@
-package com.domain.model.entity;
+package entity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
@@ -8,8 +8,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+import model.Location;
 
-import com.domain.model.Location;
+
 
 /**
  * Represents wood building material.

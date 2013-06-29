@@ -1,4 +1,4 @@
-package com.domain.model;
+package model;
 
 public enum EMaterialType {
 	WOOD, STEEL, CONCRETE

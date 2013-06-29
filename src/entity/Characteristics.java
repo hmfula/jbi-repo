@@ -1,4 +1,4 @@
-package com.domain.model.entity;
+package entity;
 
 public interface Characteristics{
 
